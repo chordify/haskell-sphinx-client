@@ -20,6 +20,7 @@ Flag version-1-1-beta
   Default: False
 
 library
+  default-language: Haskell2010
   Exposed-Modules: Text.Search.Sphinx,
                    Text.Search.Sphinx.Types,
                    Text.Search.Sphinx.Configuration, Text.Search.Sphinx.ExcerptConfiguration, 
