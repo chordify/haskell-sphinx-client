@@ -9,7 +9,7 @@ Author:          Chris Eidhof <ce+sphinx@tupil.com>, Greg Weber <greg@gregweber.
 Maintainer:      haskelldevelopers@chordify.net
 homepage:        https://github.com/chordify/haskell-sphinx-client
 
-cabal-version:   >= 1.2
+cabal-version:   >= 1.10
 Build-Type:      Simple
 
 extra-source-files: README.md
