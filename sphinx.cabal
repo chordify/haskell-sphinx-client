@@ -5,9 +5,9 @@ Description:     Haskell bindings to the Sphinx full-text searching daemon. Comp
 Category:        Text, Search, Database
 License:         BSD3
 License-file:    LICENSE
-Author:          Chris Eidhof <ce+sphinx@tupil.com>, Greg Weber
-Maintainer:      Greg Weber <greg@gregweber.info>, Aleksandar Dimitrov <aleks.dimitrov@gmail.com>
-homepage:        https://github.com/gregwebs/haskell-sphinx-client
+Author:          Chris Eidhof <ce+sphinx@tupil.com>, Greg Weber <greg@gregweber.info>, Aleksandar Dimitrov <aleks.dimitrov@gmail.com>
+Maintainer:      haskelldevelopers@chordify.net
+homepage:        https://github.com/chordify/haskell-sphinx-client
 
 cabal-version:   >= 1.2
 Build-Type:      Simple

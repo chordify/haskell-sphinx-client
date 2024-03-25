@@ -92,8 +92,9 @@ Most search and buildExcerpts features are implemented.
 History
 -------
 Originally written by Tupil and maintained by Chris Eidhof for an earlier version of sphinx.
-Greg Weber improved the library and updated it for the latest version of sphinx, and is now maintaining it.
+Greg Weber improved the library and updated it for the latest version of sphinx.
 Aleksandar Dimitrov updated the library to use Text.
+The Haskell team of [Chordify](https://chordify.net) is now maintaining the library.
 
 Usage of this haskell client
 ----------------------------
