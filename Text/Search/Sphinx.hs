@@ -37,9 +37,11 @@ import Text.Search.Sphinx.Put (num, num64, float, enum, list, numC, strC, foldPu
 
 import Data.Binary.Put (Put, runPut)
 import Data.Binary.Get (runGet, getWord32be)
+import qualified Data.ByteString as BSS
 import qualified Data.ByteString.Lazy as BS
 import qualified Data.ByteString.Lazy.Char8 as BS8
 import Data.Int (Int64)
+import Data.Word (Word32)
 
 import qualified Network.Simple.TCP as TCP
 import System.IO (Handle, hFlush)
@@ -273,8 +275,17 @@ getResponse conn = do
   if len == 0
     then error "received zero-sized searchd response (bad query?)"
     else return ()
-  Just response <- TCP.recv conn (fromIntegral len)
-  return (status, BS.fromStrict response)
+  response <- readLazyBS conn len
+  return (status, response)
+
+-- | Read bytes from the socket into a lazy bytestring, waiting for the
+--   full amount to be read, in contrast to `recv` which might return less bytes.
+readLazyBS :: TCP.Socket -> Word32 -> IO BS.ByteString
+readLazyBS conn = f BS.empty where
+  f accum 0 = pure accum
+  f accum len = do
+    Just chunk <- TCP.recv conn (fromIntegral len `min` 1024)
+    f (accum <> BS.fromStrict chunk) (len - fromIntegral (BSS.length chunk))
 
 -- | use with runQueries to pipeline a batch of queries
 serializeQuery :: Configuration -> ICU.Converter -> T.Query -> Put
